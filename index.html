@@ -20,7 +20,8 @@
   const binary=atob(parts.join(''));
   const bytes=new Uint8Array(binary.length);
   for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
-  const html=new TextDecoder().decode(pako.ungzip(bytes));
+  let html=new TextDecoder().decode(pako.ungzip(bytes));
+  html=html.replaceAll('BCM_Project_Builder_V3_FINAL.html','https://sabd-git-preview-bcm-system-web-seagraphix-7497s-projects.vercel.app/build-client/BCM_Project_Builder_Desktop_v0.1.2/dist/index.html?_vercel_share=dG1h5HgKLxIwZwsEYD8o7cfAgx06uxhP');
   document.open();document.write(html);document.close();
 })().catch(err=>{console.error(err);document.body.innerHTML='<div style="font:16px system-ui;padding:32px">Presentation failed to load. Please refresh.</div>'});
 </script>
