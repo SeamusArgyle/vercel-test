@@ -1,1 +1,28 @@
-<h1>Hello World</h1>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>BCM + SABD</title>
+<style>html,body{margin:0;background:#f7f3ea;font-family:system-ui,-apple-system,sans-serif}.loading{padding:32px;color:#151918}</style>
+<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+</head>
+<body>
+<div class="loading">Loading BCM + SABD presentation…</div>
+<script>
+(async()=>{
+  const urls=[
+    'https://bcm-sabd-partnership-qmvya8t95-seagraphix-7497s-projects.vercel.app/data/0.txt',
+    'https://bcm-sabd-partnership-qmvya8t95-seagraphix-7497s-projects.vercel.app/data/1.txt'
+  ];
+  const parts=await Promise.all(urls.map(async u=>{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error('Failed to load presentation data');return (await r.text()).trim()}));
+  const binary=atob(parts.join(''));
+  const bytes=new Uint8Array(binary.length);
+  for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+  const html=new TextDecoder().decode(pako.ungzip(bytes));
+  document.open();document.write(html);document.close();
+})().catch(err=>{console.error(err);document.body.innerHTML='<div style="font:16px system-ui;padding:32px">Presentation failed to load. Please refresh.</div>'});
+</script>
+</body>
+</html>
