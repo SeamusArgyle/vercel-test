@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 
+// Locked BCM + SABD meeting presentation rebuild.
 const CHUNKS = [
   'https://bcm-sabd-partnership.vercel.app/data/0.txt',
   'https://bcm-sabd-partnership.vercel.app/data/1.txt'
