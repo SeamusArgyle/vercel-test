@@ -1,6 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "build": "node build.js"
+    "build": "rm -rf dist && mkdir -p dist && cp -R sabd-v33-phone/. dist/"
   }
 }
